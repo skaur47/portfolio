@@ -881,7 +881,7 @@ export default function App() {
           {/* Left: bio text */}
           <div className="w-full md:w-[300px] md:shrink-0" style={{ color: darkMode ? "#cbd5e1" : "#334155" }}>
             <p className="leading-relaxed">
-              Hi! I'm Simran Kaur, currently a senior undergraduate Biomedical Engineering student at Boston University concentrating in
+              Hi! I'm Simran Kaur, currently an undergraduate senior Biomedical Engineering student at Boston University concentrating in
               Machine Learning. I'm passionate about applying{" "}
               <span
                 onMouseEnter={() => setHighlightedNodes([5, 4, 2])}
