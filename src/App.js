@@ -690,7 +690,7 @@ function NetworkMap({ darkMode, highlightedNodes = [] }) {
           const th = 3 * TH_LINE + T_PAD * 2;
           const CLEARANCE = 14;
 
-          const onRight = n.x >= cx;
+          const onRight = n.x + NODE_R + CLEARANCE + TW <= W + 10;
           const rx = onRight ? n.x + NODE_R + CLEARANCE : n.x - NODE_R - CLEARANCE - TW;
           const ry = Math.max(4, Math.min(H - th - 4, n.y - th / 2));
 
