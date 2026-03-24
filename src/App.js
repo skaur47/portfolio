@@ -70,12 +70,12 @@ const researchProjects = [
     title: "Identifying transcriptomic signatures that mediate the causal effect of genotype on Alzheimer's disease",
     description: "The combined effects of thousands of genetic polymorphisms account for Alzheimer's disease (AD) genetic risk. Most AD polymorphisms affect gene expression. Thus, the transcriptome, the set of all gene expression levels for every gene in the genome, is a major mediator between the genotype to phenotype. This study uses genotypes, transcriptomes, and clinical phenotypes to identify the transcriptomic signature that mediates the causal effect of genotype on AD. By utilizing a causal inference method known as high dimensional mediation analysis (HDMA) on the Religious Orders Study/Memory and Aging Project (ROSMAP) longitudinal cohort, the genotype, transcriptome, and phenotype data were reduced to single scores encoding genotype, transcriptome, and phenotype correlations, and produce a ranked gene list based on putative causal importance of each gene for AD. Analysis of the up- and down-regulated genes prevalent in AD through Gene Ontology (GO) and KEGG databases reveals findings such as up-regulated functions which include angiogenesis and immune responses while down-regulated functions of genes include synaptic activity. Furthermore, utilizing Clue.io to identify candidate drugs to suppress AD-pathology reveals a plausible list of therapeutic candidates, including targeted genes and compounds such as SMAD3, TM7SF2, and ABCB1, which counteract the transcriptomic signature identified and may block the devastating effects of AD related to inflammatory responses, Aβ-induced toxicity, and neuronal death.",
     skills: [
-      "high-performance computing",
       "R programming",
-      "high-dimensional mediation analysis",
+      "causal inference methods",
       "multi-omics data analysis",
       "gene enrichment analysis",
       "drug repositioning",
+      "neurobiology"
     ],
     poster: "/JAX_NCRC_FinalPoster.png",
     posterCaption: "Presented at National Collegiate Research Conference 2026",
@@ -83,14 +83,13 @@ const researchProjects = [
   },
   {
     title: "Pilot study to identify undiagnosed patients utilizing anomaly detection methods on medical claims data",
-    description: "[Add research description here]",
+    description: "This pilot study explored how unsupervised anomaly-detection methods can surface undiagnosed or atypically diagnosed patients within large-scale medical claims data. Rare diseases often involve years of diagnostic delays, so we aimed to identify patients whose diagnostic patterns deviate from the norm which potentially signals overlooked conditions. Using a cohort of over 58,000 pediatric patients with neurological diagnoses, we constructed patient phecode-frequency matrices and applied multiple anomaly-detection models, including Isolation Forest, One-Class SVM, and Local Outlier Factor. Across models, a consistent subset of 349 patients emerged as anomalous, characterized by more complex diagnostic histories. Subsequent phenotype clustering revealed shared neurological, immune, and viral-related patterns indicative of rare or mischaracterized disorders. This work demonstrates that unsupervised machine learning can highlight hidden diagnostic trajectories and may support earlier identification of rare disease patients, ultimately informing more proactive and precise clinical evaluation.",
     skills: [
       "unsupervised machine learning",
-      "anomaly detection",
       "R programming",
-      "clustering",
+      "clustering algorithms",
       "dimensionality reduction",
-      "EHR data analysis",
+      "high-performance computing",
     ],
     poster: "/SIBMI_HMSposter.png",
     posterCaption: "Presented at the Boston University Society of Asian Scientists and Engineers Innovation Symposium 2026",
@@ -98,13 +97,12 @@ const researchProjects = [
   },
   {
     title: "Characterization of the interaction between microtubules and V-ATPases in nurse cell clearance during Drosophila melanogaster oogenesis",
-    description: "[Add research description here]",
+    description: "I investigated how microtubules help regulate the clearance of dying nurse cells during Drosophila melanogaster (fruit fly) oogenesis, a process essential for producing healthy eggs. Proper removal of these cells depends on V-ATPases, proton-pumping enzymes that acidify and break down nurse cells, but the mechanism that brings V-ATPases to the stretch follicle cell membrane is currently unknown. This project explored the hypothesis that microtubules act as the transport network that delivers V-ATPases to the correct cellular location. Using genetic tools, fluorescent imaging, and targeted disruption of microtubule-associated proteins using RNAi, I examined whether microtubules and V-ATPases co-localize in stretch follicle cells and how microtubule perturbation affects V-ATPase positioning and nurse-cell degradation. This work contributes to a broader understanding of how intracellular transport controls cell-clearance pathways which are processes whose failure can be implicated in diseases such as rheumatoid arthritis, lupus, and osteoporosis.",
     skills: [
       "confocal microscopy",
-      "immunohistochemistry",
-      "fly husbandry and genotyping",
+      "immunohistochemistry and immunofluorescence",
       "Drosophila melanogaster biology",
-      "cell biology",
+      "fly husbandry and genotyping",
     ],
     poster: null,
     experiment: "/mccalllabexperiment.png",
@@ -120,17 +118,17 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
       prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]
     );
 
-  const cardBg = darkMode ? "#0f172a" : "#ffffff";
-  const cardBorder = darkMode ? "#1e3a8a55" : "#1e3a8a22";
+  const cardBg = darkMode ? "#162035" : "#ffffff";
+  const cardBorder = darkMode ? "#3b5fc077" : "#1e3a8a22";
   const terminalBg = darkMode ? "#020617" : "#0f172a";
-  const bodyColor = darkMode ? "#cbd5e1" : "#334155";
+  const bodyColor = darkMode ? "#e2e8f0" : "#334155";
 
   const PublicationBlock = () => (
     <div
       className="rounded-xl p-4 border w-full"
-      style={{ borderColor: cardBorder, background: darkMode ? "#0a1628" : "#eef2ff" }}
+      style={{ borderColor: cardBorder, background: darkMode ? "#1a2a4a" : "#eef2ff" }}
     >
-      <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-center" style={{ color: "#1e3a8a" }}>
+      <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-center" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
         📄 Publication
       </p>
       <p className="leading-relaxed text-center" style={{ color: bodyColor }}>
@@ -142,7 +140,7 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
           target="_blank"
           rel="noopener noreferrer"
           className="underline underline-offset-2 hover:opacity-80 transition break-all"
-          style={{ color: "#1e3a8a" }}
+          style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}
         >
           https://doi.org/10.3389/fnins.2026.1716828
         </a>
@@ -154,7 +152,7 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
     <div>
       <div className="flex items-center gap-4 mb-6">
         <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to right, transparent, #3b5fc0)" : "linear-gradient(to right, transparent, #1e3a8a)" }} />
-        <h2 className="text-2xl font-semibold text-[#1e3a8a] whitespace-nowrap">Research</h2>
+        <h2 className="text-2xl font-semibold whitespace-nowrap" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>Research</h2>
         <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to left, transparent, #3b5fc0)" : "linear-gradient(to left, transparent, #1e3a8a)" }} />
       </div>
 
@@ -208,10 +206,10 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
               >
                 {i + 1}
               </span>
-              <p className="flex-1 font-semibold text-base leading-snug text-[#1e3a8a]">
+              <p className="flex-1 font-semibold text-base leading-snug" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
                 {proj.title}
               </p>
-              <span className="shrink-0 text-sm font-bold mt-0.5" style={{ color: "#92400e" }}>
+              <span className="shrink-0 text-sm font-bold mt-0.5" style={{ color: darkMode ? "#d97706" : "#92400e" }}>
                 {isOpen(i) ? "▲" : "▼"}
               </span>
             </div>
@@ -236,7 +234,7 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
                 {/* Poster — centered */}
                 {proj.poster && (
                   <div className="flex flex-col items-center">
-                    <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-center" style={{ color: "#1e3a8a" }}>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-center" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
                       Research Poster
                     </p>
                     <img
@@ -258,7 +256,7 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
                 {/* Experiment image */}
                 {proj.experiment && (
                   <div className="flex flex-col items-center">
-                    <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-center" style={{ color: "#1e3a8a" }}>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-center" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
                       Featured Experiments
                     </p>
                     <img
@@ -269,12 +267,15 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
                       onClick={() => setPosterOpen(`exp-${i}`)}
                     />
                     <p className="text-xs opacity-40 mt-1">Click to enlarge</p>
+                    <p className="text-xs text-center mt-1 italic max-w-xs" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", opacity: 0.8 }}>
+                      [A] Visualization of V-ATPases localization with stretch follicle cells surrounding a nurse cell, [B] Microtubule-perturbed proteins effect on V-ATPases recruition and acidification of nurse cells
+                    </p>
                   </div>
                 )}
 
                 {/* Terminal skills block — inside expandable */}
                 <div className="w-full">
-                  <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-center" style={{ color: "#1e3a8a" }}>
+                  <p className="text-xs font-semibold uppercase tracking-widest mb-2 text-center" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
                     Skills Used
                   </p>
                   <div
@@ -283,7 +284,7 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
                   >
                     {proj.skills.map((skill, j) => (
                       <div key={j} className="flex items-center gap-2">
-                        <span className="font-bold select-none" style={{ color: "#92400e" }}>{">"}</span>
+                        <span className="font-bold select-none" style={{ color: darkMode ? "#d97706" : "#92400e" }}>{">"}</span>
                         <span style={{ color: "#93c5fd" }}>{skill}</span>
                       </div>
                     ))}
@@ -300,13 +301,21 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
 
 function HobbiesTab({ darkMode }) {
   const images = [
-    { src: "/circadiandrift.png",    name: "Circadian Drift (Spring 2026 Issue)" },
-    { src: "/fourgetthepicture.png", name: "four, get the picture" },
-    { src: "/mothertongue.png",      name: "Mother Tongue" },
-    { src: "/sagaofstars.png",       name: "Saga of Stars (Fall 2025 Issue)" },
+    { src: "/circadiandrift.png",    name: "Circadian Drift (Fall 2026 Issue)" },
+    { src: "/fourgetthepicture.png", name: "four, get the picture (Featured in Circadian Drift)" },
+    { src: "/mothertongue.png",      name: "Mother Tongue (Spring 2025 Issue) " },
+    { src: "/sagaofstars.png",       name: "Saga of Stars (Featured in Mother Tongue)" },
   ];
 
   const n = images.length; // 4
+
+  const [winW, setWinW] = React.useState(window.innerWidth);
+  React.useEffect(() => {
+    const onResize = () => setWinW(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  const isMobile = winW < 640;
 
   // Triple the array → indices 0-11.
   // rawIdx lives on a continuous number line; after each spring settles we
@@ -330,12 +339,12 @@ function HobbiesTab({ darkMode }) {
 
   const displayIdx = rawIdx % n; // which of the 4 logical images is active
 
-  // Layout constants (px)
-  const CARD_W = 300;
+  // Layout constants (px) — responsive
+  const CARD_W = isMobile ? Math.max(220, winW - 100) : 300;
   const CARD_H = 360;
-  const PEEK   = 86;
+  const PEEK   = isMobile ? 20 : 86;
   const GAP    = 10;
-  const WRAP_W = CARD_W + PEEK * 2; // 472
+  const WRAP_W = CARD_W + PEEK * 2;
 
   // Centers card[rawIdx] inside WRAP_W
   const trackX = PEEK - rawIdx * (CARD_W + GAP);
@@ -379,7 +388,7 @@ function HobbiesTab({ darkMode }) {
     <div>
       <div className="flex items-center gap-4 mb-6">
         <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to right, transparent, #3b5fc0)" : "linear-gradient(to right, transparent, #1e3a8a)" }} />
-        <h2 className="text-2xl font-semibold text-[#1e3a8a] whitespace-nowrap">Hobbies</h2>
+        <h2 className="text-2xl font-semibold whitespace-nowrap" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>Hobbies</h2>
         <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to left, transparent, #3b5fc0)" : "linear-gradient(to left, transparent, #1e3a8a)" }} />
       </div>
 
@@ -454,7 +463,7 @@ function HobbiesTab({ darkMode }) {
 
           {/* Prev arrow */}
           <button onClick={goPrev} style={{
-            position: "absolute", left: "-20px", top: "50%", transform: "translateY(-50%)",
+            position: "absolute", left: isMobile ? "4px" : "-20px", top: "50%", transform: "translateY(-50%)",
             width: "38px", height: "38px", borderRadius: "50%",
             background: "#1e3a8a", color: "white", fontSize: "22px", fontWeight: "bold",
             display: "flex", alignItems: "center", justifyContent: "center",
@@ -466,7 +475,7 @@ function HobbiesTab({ darkMode }) {
 
           {/* Next arrow */}
           <button onClick={goNext} style={{
-            position: "absolute", right: "-20px", top: "50%", transform: "translateY(-50%)",
+            position: "absolute", right: isMobile ? "4px" : "-20px", top: "50%", transform: "translateY(-50%)",
             width: "38px", height: "38px", borderRadius: "50%",
             background: "#1e3a8a", color: "white", fontSize: "22px", fontWeight: "bold",
             display: "flex", alignItems: "center", justifyContent: "center",
@@ -478,7 +487,7 @@ function HobbiesTab({ darkMode }) {
         </div>
 
         {/* Image name */}
-        <p className="mt-4 text-sm font-semibold tracking-wide" style={{ color: "#92400e" }}>
+        <p className="mt-4 text-sm font-semibold tracking-wide" style={{ color: darkMode ? "#d97706" : "#92400e" }}>
           {images[displayIdx].name}
         </p>
 
@@ -517,8 +526,8 @@ function HobbiesTab({ darkMode }) {
                   style={{ maxWidth: "90vw", maxHeight: "82vh" }}
                 />
               </AnimatePresence>
-              <button onClick={goPrev} className="absolute -left-14 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center text-white text-3xl font-bold transition hover:scale-110" style={{ background: "rgba(30,58,138,0.85)" }}>‹</button>
-              <button onClick={goNext} className="absolute -right-14 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center text-white text-3xl font-bold transition hover:scale-110" style={{ background: "rgba(30,58,138,0.85)" }}>›</button>
+              <button onClick={goPrev} className="absolute left-2 sm:-left-14 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center text-white text-3xl font-bold transition hover:scale-110" style={{ background: "rgba(30,58,138,0.85)" }}>‹</button>
+              <button onClick={goNext} className="absolute right-2 sm:-right-14 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center text-white text-3xl font-bold transition hover:scale-110" style={{ background: "rgba(30,58,138,0.85)" }}>›</button>
             </div>
             <p className="absolute bottom-8 text-sm font-semibold tracking-widest" style={{ color: "#f5f5f4", opacity: 0.75 }}>
               {images[displayIdx].name}
@@ -540,7 +549,7 @@ function NetworkMap({ darkMode, highlightedNodes = [] }) {
 
   const nodeData = [
     { angle: 0,   label: ["Biomedical", "Engineering"],  tooltip: ["Designing solutions at the", "intersection of biology", "and engineering"] },
-    { angle: 60,  label: ["Machine", "Learning"],         tooltip: ["Applying methods to", "biomedical and clinical", "data problems"] },
+    { angle: 60,  label: ["Machine", "Learning"],         tooltip: ["Applying methods to", "biomedical and clinical", "complex problems"] },
     { angle: 120, label: ["Genomics &", "Multi-omics"],   tooltip: ["Analyzing transcriptomic and", "multi-omics data for", "disease insights"] },
     { angle: 180, label: ["Clinical", "Informatics"],     tooltip: ["Mining medical data", "to improve ", "healthcare delivery"] },
     { angle: 240, label: ["Systems", "Biology"],   tooltip: ["Complex biological circuits", "and interactions", "for design and dicovery"] },
@@ -565,7 +574,7 @@ function NetworkMap({ darkMode, highlightedNodes = [] }) {
       <svg
         width="100%"
         viewBox={`-10 0 ${W + 20} ${H}`}
-        style={{ maxWidth: "980px", overflow: "visible" }}
+        style={{ minWidth: "400px", maxWidth: "980px", overflow: "visible" }}
       >
         <defs>
           <clipPath id="headshot-clip">
@@ -607,17 +616,26 @@ function NetworkMap({ darkMode, highlightedNodes = [] }) {
               }}
               transition={{ duration: 4 + n.i * 0.7, repeat: Infinity, ease: "easeInOut", delay: n.i * 0.4 }}
             >
+              {/* Halo ring — pulses like center node, on direct hover or keyword highlight */}
+              {(hoveredNode === n.i || highlightedNodes.includes(n.i)) && (
+                <motion.circle
+                  cx={n.x} cy={n.y}
+                  fill="none"
+                  stroke="#92400e"
+                  strokeWidth="1.5"
+                  animate={{ r: [NODE_R * 1.18 + 8, NODE_R * 1.18 + 18, NODE_R * 1.18 + 8], opacity: [0.55, 0.15, 0.55] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ pointerEvents: "none" }}
+                />
+              )}
+              {/* Main circle */}
               <motion.circle
                 cx={n.x} cy={n.y}
+                initial={{ r: NODE_R }}
                 animate={{ r: (hoveredNode === n.i || highlightedNodes.includes(n.i)) ? NODE_R * 1.18 : NODE_R }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 fill="#92400e" opacity="0.92"
-                style={{
-                  cursor: "pointer",
-                  filter: (hoveredNode === n.i || highlightedNodes.includes(n.i))
-                    ? "drop-shadow(0 0 10px rgba(146,64,14,0.75))"
-                    : "none",
-                }}
+                style={{ cursor: "pointer" }}
               />
               {n.label.map((line, j) => (
                 <text
@@ -723,7 +741,7 @@ function ExperienceTimeline({ darkMode, setTab }) {
     <div>
       <div className="flex items-center gap-4 mb-6">
         <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to right, transparent, #3b5fc0)" : "linear-gradient(to right, transparent, #1e3a8a)" }} />
-        <h2 className="text-2xl font-semibold text-[#1e3a8a] whitespace-nowrap">Experience</h2>
+        <h2 className="text-2xl font-semibold whitespace-nowrap" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>Experience</h2>
         <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to left, transparent, #3b5fc0)" : "linear-gradient(to left, transparent, #1e3a8a)" }} />
       </div>
       <div className="relative">
@@ -746,7 +764,7 @@ function ExperienceTimeline({ darkMode, setTab }) {
               <div
                 className="absolute left-0 w-16 h-16 rounded-full flex items-center justify-center shadow-md border-2 cursor-pointer"
                 style={{
-                  background: darkMode ? "#0f172a" : "#ffffff",
+                  background: "#ffffff",
                   borderColor: "#1e3a8a",
                   zIndex: 10,
                 }}
@@ -763,16 +781,16 @@ function ExperienceTimeline({ darkMode, setTab }) {
               <div
                 className="flex-1 rounded-2xl overflow-hidden shadow-sm border cursor-pointer select-none"
                 style={{
-                  borderColor: darkMode ? "#1e3a8a55" : "#1e3a8a22",
-                  background: darkMode ? "#0f172a" : "#ffffff",
+                  borderColor: darkMode ? "#3b5fc077" : "#1e3a8a22",
+                  background: darkMode ? "#162035" : "#ffffff",
                 }}
                 onClick={() => setOpen(open === i ? null : i)}
               >
                 {/* Header row */}
-                <div className="flex items-center justify-between px-5 py-4 gap-4">
+                <div className="flex flex-wrap items-center justify-between px-5 py-4 gap-2 sm:gap-4">
                   <div>
-                    <p className="font-semibold text-base text-[#1e3a8a]">{exp.org}</p>
-                    <p className="text-sm font-medium" style={{ color: "#92400e" }}>{exp.role}</p>
+                    <p className="font-semibold text-base" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>{exp.org}</p>
+                    <p className="text-sm font-medium" style={{ color: darkMode ? "#d97706" : "#92400e" }}>{exp.role}</p>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
                     <span
@@ -784,7 +802,7 @@ function ExperienceTimeline({ darkMode, setTab }) {
                     >
                       {exp.date}
                     </span>
-                    <span className="text-base font-bold" style={{ color: "#92400e" }}>
+                    <span className="text-base font-bold" style={{ color: darkMode ? "#d97706" : "#92400e" }}>
                       {open === i ? "▲" : "▼"}
                     </span>
                   </div>
@@ -817,7 +835,7 @@ function ExperienceTimeline({ darkMode, setTab }) {
                       <div className="mt-3 pt-3 border-t" style={{ borderColor: darkMode ? "#1e3a8a44" : "#1e3a8a22" }}>
                         <button
                           className="text-xs font-semibold px-3 py-1.5 rounded-lg border transition hover:opacity-75"
-                          style={{ color: "#1e3a8a", borderColor: "#1e3a8a", background: darkMode ? "#1e3a8a22" : "#eef2ff" }}
+                          style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", borderColor: darkMode ? "#93c5fd" : "#1e3a8a", background: darkMode ? "#1e3a8a33" : "#eef2ff" }}
                           onClick={(e) => {
                             e.stopPropagation();
                             setTab("research");
@@ -856,12 +874,12 @@ export default function App() {
       <div>
         <div className="flex items-center gap-4 mb-6">
           <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to right, transparent, #3b5fc0)" : "linear-gradient(to right, transparent, #1e3a8a)" }} />
-          <h2 className="text-2xl font-semibold text-[#1e3a8a] whitespace-nowrap">About Me</h2>
+          <h2 className="text-2xl font-semibold whitespace-nowrap" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>About Me</h2>
           <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to left, transparent, #3b5fc0)" : "linear-gradient(to left, transparent, #1e3a8a)" }} />
         </div>
-        <div className="flex gap-0 items-center justify-center">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-0 items-start md:items-center justify-center">
           {/* Left: bio text */}
-          <div className="w-[300px] shrink-0" style={{ color: darkMode ? "#cbd5e1" : "#334155" }}>
+          <div className="w-full md:w-[300px] md:shrink-0" style={{ color: darkMode ? "#cbd5e1" : "#334155" }}>
             <p className="leading-relaxed">
               Hi! I'm Simran Kaur, a Biomedical Engineering student at Boston University concentrating in
               Machine Learning. I'm passionate about applying{" "}
@@ -872,12 +890,12 @@ export default function App() {
               >computational methods to biological systems</span>, particularly
               in areas where data-driven insights can lead to{" "}
               <span
-                onMouseEnter={() => setHighlightedNodes([3])}
+                onMouseEnter={() => setHighlightedNodes([3, 0])}
                 onMouseLeave={() => setHighlightedNodes([])}
                 style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", borderBottom: `1px dotted ${darkMode ? "#93c5fd" : "#1e3a8a"}`, paddingBottom: "1px", cursor: "default" }}
               >translational impact</span>. My interests include{" "}
               <span
-                onMouseEnter={() => setHighlightedNodes([1])}
+                onMouseEnter={() => setHighlightedNodes([1, 5])}
                 onMouseLeave={() => setHighlightedNodes([])}
                 style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", borderBottom: `1px dotted ${darkMode ? "#93c5fd" : "#1e3a8a"}`, paddingBottom: "1px", cursor: "default" }}
               >developing predictive models</span>,{" "}
@@ -902,28 +920,9 @@ export default function App() {
             </p>
           </div>
           {/* Right: network map */}
-          <div className="w-[620px] shrink-0">
+          <div className="w-full md:w-[620px] md:shrink-0 overflow-x-auto">
             <NetworkMap darkMode={darkMode} highlightedNodes={highlightedNodes} />
           </div>
-        </div>
-      </div>
-    ),
-
-    cv: ( 
-      <div>
-        <div className="flex items-center gap-4 mb-6">
-          <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to right, transparent, #3b5fc0)" : "linear-gradient(to right, transparent, #1e3a8a)" }} />
-          <h2 className="text-2xl font-semibold text-[#1e3a8a] whitespace-nowrap">CV</h2>
-          <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to left, transparent, #3b5fc0)" : "linear-gradient(to left, transparent, #1e3a8a)" }} />
-        </div>
-        <div className="w-full rounded-xl overflow-hidden shadow-lg" style={{ height: "80vh" }}>
-          <iframe
-            src={process.env.PUBLIC_URL + "/Kaur_Simran_Resume.pdf"}
-            title="Simran Kaur CV"
-            width="100%"
-            height="100%"
-            style={{ border: "none", display: "block" }}
-          />
         </div>
       </div>
     ),
@@ -936,17 +935,81 @@ export default function App() {
       <div>
         <div className="flex items-center gap-4 mb-6">
           <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to right, transparent, #3b5fc0)" : "linear-gradient(to right, transparent, #1e3a8a)" }} />
-          <h2 className="text-2xl font-semibold text-[#1e3a8a] whitespace-nowrap">Projects</h2>
+          <h2 className="text-2xl font-semibold whitespace-nowrap" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>Projects</h2>
           <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to left, transparent, #3b5fc0)" : "linear-gradient(to left, transparent, #1e3a8a)" }} />
         </div>
-        <ul className="list-disc ml-5">
-          <li>Bayesian Network Drug Repositioning</li>
-          <li>miRNA-siRNA Modeling</li>
-        </ul>
+        <div
+          className="rounded-2xl border p-6 shadow-sm"
+          style={{
+            borderColor: darkMode ? "#3b5fc077" : "#1e3a8a22",
+            background: darkMode ? "#162035" : "#ffffff",
+          }}
+        >
+          {/* Tag */}
+          <span
+            className="inline-block text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4"
+            style={{ background: darkMode ? "#1e3a8a33" : "#e0e7ff", color: darkMode ? "#93c5fd" : "#1e3a8a" }}
+          >
+            Computational Biology
+          </span>
+
+          {/* Title */}
+          <h3
+            className="text-lg font-semibold leading-snug mb-4"
+            style={{ color: darkMode ? "#e2e8f0" : "#1e293b" }}
+          >
+            Bayesian Network Modeling of Cell-Cell Communication for Drug Repositioning in Triple-Negative Breast Cancer (TNBC)
+          </h3>
+
+          {/* Description */}
+          <p className="leading-relaxed text-sm mb-6" style={{ color: darkMode ? "#cbd5e1" : "#475569" }}>
+            This project developed a single-cell-driven framework for systematic drug repurposing in triple-negative breast cancer (TNBC), one of the most heterogeneous and difficult-to-treat cancer subtypes. By constructing a single-cell RNA-seq atlas of the TNBC tumor microenvironment, transcriptional differences between tumor and normal epithelial cells were analyzed and mapped to intercellular signaling networks using curated ligand-receptor interactions. Tumor-specific gene signatures were then integrated with LINCS L1000 perturbation data through metaLINCS to identify drugs and mechanisms of action with connectivity to TNBC expression patterns. To translate these findings into an interpretable predictive model, a Bayesian network was constructed to link drugs, transcriptional responses, and mechanisms of action, enabling quantitative probabilities of drug-signature alignment. This integrated approach recovered known TNBC-relevant drug classes, such as MAPK inhibitors, acetylcholine receptor antagonists, NF-κB pathway inhibitors, and PIM kinase inhibitors, while also highlighting novel candidates with plausible roles in tumor or immune modulation. More broadly, the framework provides a generalizable strategy for drug repositioning in heterogeneous cancers by unifying single-cell biology, pathway activity, intercellular communication, and probabilistic modeling.
+          </p>
+
+          {/* Video */}
+          <div className="flex flex-col items-center">
+            <video
+              src={process.env.PUBLIC_URL + "/bayesiannet.mov"}
+              controls
+              className="w-full rounded-lg shadow-sm border"
+              style={{ borderColor: darkMode ? "#1e3a8a55" : "#1e3a8a22" }}
+            />
+            <p className="text-xs text-center italic mt-2 max-w-lg" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", opacity: 0.8 }}>
+              The interactive Bayesian network highlighting known and unknown drug candidates for TNBC (blue), mechanisms of actions (yellow), and various cell lines (purple) with probabilitic values to explore novel therapeutic options and validate efficacy of existing TNBC drugs.
+            </p>
+          </div>
+        </div>
+
+        {/* Upcoming projects banner */}
+        <div
+          className="mt-6 rounded-2xl px-6 py-4 text-center text-sm italic"
+          style={{ background: darkMode ? "#1e293b" : "#e5e7eb", color: darkMode ? "#94a3b8" : "#6b7280" }}
+        >
+          Upcoming projects currently being tinkered and debugged! Stay tuned!
+        </div>
       </div>
     ),
 
     hobbies: <HobbiesTab darkMode={darkMode} />,
+
+    cv: (
+      <div>
+        <div className="flex items-center gap-4 mb-6">
+          <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to right, transparent, #3b5fc0)" : "linear-gradient(to right, transparent, #1e3a8a)" }} />
+          <h2 className="text-2xl font-semibold whitespace-nowrap" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>CV</h2>
+          <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to left, transparent, #3b5fc0)" : "linear-gradient(to left, transparent, #1e3a8a)" }} />
+        </div>
+        <div className="w-full rounded-xl overflow-hidden shadow-lg" style={{ height: "80vh" }}>
+          <iframe
+            src={process.env.PUBLIC_URL + "/Kaur_Simran_CV_Portfolio.pdf"}
+            title="Simran Kaur CV"
+            width="100%"
+            height="100%"
+            style={{ border: "none", display: "block" }}
+          />
+        </div>
+      </div>
+    ),
   };
 
   // Equidistant vertical positions, alternating horizontal offsets (zigzag pattern)
@@ -959,7 +1022,7 @@ export default function App() {
 
 return (
   <div
-    className={`min-h-screen transition-all duration-500 font-serif overflow-hidden ${
+    className={`min-h-screen transition-all duration-500 font-serif overflow-x-hidden ${
       darkMode ? "bg-[#0f172a] text-[#e5e7eb]" : "bg-[#f5f5f4] text-[#1e293b]"
     }`}
   >
@@ -971,7 +1034,7 @@ return (
 
         {/* Centered Name and Email */}
         <div className="absolute left-1/2 -translate-x-1/2 text-center whitespace-nowrap">
-          <h1 className="text-5xl font-bold text-[#1e3a8a]">
+          <h1 className="text-3xl sm:text-5xl font-bold" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
             Simran Kaur
           </h1>
           <p className="text-sm opacity-70">simk@bu.edu</p>
@@ -1000,21 +1063,22 @@ return (
     </div>
 
        {/* Tabs */}
-<div className="flex justify-center gap-6 mb-8 text-lg border-b border-gray-200 dark:border-gray-700 pb-2">
+<div className="flex justify-center gap-2 sm:gap-6 mb-8 text-xs sm:text-lg border-b border-gray-200 dark:border-gray-700 pb-2 overflow-x-auto" style={{ WebkitOverflowScrolling: "touch" }}>
   {Object.keys(tabs).map((t) => (
     <button
       key={t}
       onClick={() => setTab(t)}
-      className={`transition-all duration-300 relative px-2 ${
-        tab === t
-          ? "text-[#92400e] font-semibold"
-          : "opacity-60 hover:opacity-100"
-      }`}
+      className="transition-all duration-300 relative px-2"
+      style={{
+        color: tab === t ? (darkMode ? "#d97706" : "#92400e") : darkMode ? "#94a3b8" : "#64748b",
+        fontWeight: tab === t ? "600" : "400",
+        opacity: tab === t ? 1 : undefined,
+      }}
     >
       {t.toUpperCase()}
       {/* Optional: Animated underline for a cleaner look than standard underline */}
       {tab === t && (
-        <div className="absolute bottom-[-9px] left-0 right-0 h-0.5 bg-[#92400e]" />
+        <div className="absolute bottom-[-9px] left-0 right-0 h-0.5" style={{ background: darkMode ? "#d97706" : "#92400e" }} />
       )}
     </button>
   ))}
@@ -1028,7 +1092,7 @@ return (
               <motion.img
                 key={`lb-left-${i}`}
                 src={process.env.PUBLIC_URL + "/lightbulb.gif"}
-                className="fixed z-0 pointer-events-none"
+                className="fixed z-0 pointer-events-none hidden sm:block"
                 style={{
                   width: "50px",
                   height: "70px",
@@ -1053,7 +1117,7 @@ return (
               <motion.img
                 key={`lb-right-${i}`}
                 src={process.env.PUBLIC_URL + "/lightbulb.gif"}
-                className="fixed z-0 pointer-events-none"
+                className="fixed z-0 pointer-events-none hidden sm:block"
                 style={{
                   width: "50px",
                   height: "70px",
@@ -1083,7 +1147,7 @@ return (
               <motion.img
                 key={`left-${i}`}
                 src={process.env.PUBLIC_URL + "/dna.gif"}
-                className="fixed z-0 pointer-events-none"
+                className="fixed z-0 pointer-events-none hidden sm:block"
                 style={{
                   width: "50px",
                   height: "70px",
@@ -1108,7 +1172,7 @@ return (
               <motion.img
                 key={`right-${i}`}
                 src={process.env.PUBLIC_URL + "/dna.gif"}
-                className="fixed z-0 pointer-events-none"
+                className="fixed z-0 pointer-events-none hidden sm:block"
                 style={{
                   width: "50px",
                   height: "70px",
@@ -1130,12 +1194,115 @@ return (
           </>
         )}
 
+        {/* Computer Sprinkles when Projects */}
+        {tab === "projects" && (
+          <>
+            {leftPositions.map((position, i) => (
+              <motion.img
+                key={`comp-left-${i}`}
+                src={process.env.PUBLIC_URL + "/computer.gif"}
+                className="fixed z-0 pointer-events-none hidden sm:block"
+                style={{
+                  width: "50px",
+                  height: "70px",
+                  left: `${position}px`,
+                  top: topPositions[i],
+                  filter: darkMode
+                    ? "brightness(0) invert(1)"
+                    : "grayscale(1) brightness(1.5) drop-shadow(0 0 3px rgba(0,0,0,0.15))",
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: darkMode ? 0.30 : 0.25 }}
+                transition={{ duration: 2.5, delay: delays[i], ease: "easeIn" }}
+              />
+            ))}
+            {rightPositions.map((position, i) => (
+              <motion.img
+                key={`comp-right-${i}`}
+                src={process.env.PUBLIC_URL + "/computer.gif"}
+                className="fixed z-0 pointer-events-none hidden sm:block"
+                style={{
+                  width: "50px",
+                  height: "70px",
+                  right: `${position}px`,
+                  top: topPositions[i],
+                  filter: darkMode
+                    ? "brightness(0) invert(1)"
+                    : "grayscale(1) brightness(1.5) drop-shadow(0 0 3px rgba(0,0,0,0.15))",
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: darkMode ? 0.30 : 0.25 }}
+                transition={{ duration: 2.5, delay: delays[i], ease: "easeIn" }}
+              />
+            ))}
+          </>
+        )}
+
+        {/* Hobbies Sprinkles when Hobbies */}
+        {tab === "hobbies" && (() => {
+          const hobbyGifs = ["/book.gif", "/uranus.gif", "/rollerblade.gif"];
+          // Per-gif opacity: [darkMode, lightMode] — tweak individually here
+          const hobbyOpacity = [
+            [0.35, 0.20], // book
+            [0.40, 0.25], // uranus
+            [0.40, 0.20], // rollerblade
+          ];
+          return (
+            <>
+              {leftPositions.map((position, i) => {
+                const gifIdx = i % 3;
+                return (
+                  <motion.img
+                    key={`hobby-left-${i}`}
+                    src={process.env.PUBLIC_URL + hobbyGifs[gifIdx]}
+                    className="fixed z-0 pointer-events-none hidden sm:block"
+                    style={{
+                      width: "50px",
+                      height: "70px",
+                      left: `${position}px`,
+                      top: topPositions[i],
+                      filter: darkMode
+                        ? "brightness(0) invert(1)"
+                        : "grayscale(1) brightness(1.5) drop-shadow(0 0 3px rgba(0,0,0,0.15))",
+                    }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: darkMode ? hobbyOpacity[gifIdx][0] : hobbyOpacity[gifIdx][1] }}
+                    transition={{ duration: 2.5, delay: delays[i], ease: "easeIn" }}
+                  />
+                );
+              })}
+              {rightPositions.map((position, i) => {
+                const gifIdx = i % 3;
+                return (
+                  <motion.img
+                    key={`hobby-right-${i}`}
+                    src={process.env.PUBLIC_URL + hobbyGifs[gifIdx]}
+                    className="fixed z-0 pointer-events-none hidden sm:block"
+                    style={{
+                      width: "50px",
+                      height: "70px",
+                      right: `${position}px`,
+                      top: topPositions[i],
+                      filter: darkMode
+                        ? "brightness(0) invert(1)"
+                        : "grayscale(1) brightness(1.5) drop-shadow(0 0 3px rgba(0,0,0,0.15))",
+                    }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: darkMode ? hobbyOpacity[gifIdx][0] : hobbyOpacity[gifIdx][1] }}
+                    transition={{ duration: 2.5, delay: delays[i], ease: "easeIn" }}
+                  />
+                );
+              })}
+            </>
+          );
+        })()}
+
         {/* Content */}
         <motion.div
           key={tab}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-6 relative z-10"
+          className="p-2 sm:p-6 relative z-10"
         >
           {tabs[tab]}
         </motion.div>
