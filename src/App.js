@@ -68,7 +68,7 @@ const experiences = [
 const researchProjects = [
   {
     title: "Identifying transcriptomic signatures that mediate the causal effect of genotype on Alzheimer's disease",
-    description: "[Add research description here]",
+    description: "The combined effects of thousands of genetic polymorphisms account for Alzheimer's disease (AD) genetic risk. Most AD polymorphisms affect gene expression. Thus, the transcriptome, the set of all gene expression levels for every gene in the genome, is a major mediator between the genotype to phenotype. This study uses genotypes, transcriptomes, and clinical phenotypes to identify the transcriptomic signature that mediates the causal effect of genotype on AD. By utilizing a causal inference method known as high dimensional mediation analysis (HDMA) on the Religious Orders Study/Memory and Aging Project (ROSMAP) longitudinal cohort, the genotype, transcriptome, and phenotype data were reduced to single scores encoding genotype, transcriptome, and phenotype correlations, and produce a ranked gene list based on putative causal importance of each gene for AD. Analysis of the up- and down-regulated genes prevalent in AD through Gene Ontology (GO) and KEGG databases reveals findings such as up-regulated functions which include angiogenesis and immune responses while down-regulated functions of genes include synaptic activity. Furthermore, utilizing Clue.io to identify candidate drugs to suppress AD-pathology reveals a plausible list of therapeutic candidates, including targeted genes and compounds such as SMAD3, TM7SF2, and ABCB1, which counteract the transcriptomic signature identified and may block the devastating effects of AD related to inflammatory responses, Aβ-induced toxicity, and neuronal death.",
     skills: [
       "high-performance computing",
       "R programming",
@@ -228,7 +228,7 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
                 style={{ borderColor: cardBorder, color: bodyColor }}
               >
                 {/* Description — centered */}
-                <p className="pt-4 text-center max-w-2xl">{proj.description}</p>
+                <p className="pt-4 text-left max-w-2xl">{proj.description}</p>
 
                 {/* Publication FIRST for project 0 (JAX) */}
                 {i === 0 && proj.publication && <PublicationBlock />}
@@ -384,8 +384,12 @@ function HobbiesTab({ darkMode }) {
       </div>
 
       {/* Text area — fill in later */}
-      <p className="mb-8 leading-relaxed max-w-xl" style={{ color: bodyColor }}>
-        [Add a description of your hobbies here.]
+      <p className="mb-8 leading-relaxed w-full" style={{ color: bodyColor }}>
+        I enjoy writing, especially poetry, where I get to experiment with rhyme schemes, alliteration, and different narrative styles. 
+        I love playing with language to create rhythm, emotion, and imagery, and I’m always exploring new ways to shape ideas into meaningful stories on the page.
+        Currently, I serve as the Vice-President and Associate Editor of The Beacon at Boston University, the oldest creative works literary magazine on campus.
+        During my time at The Beacon as an editor, I have had two of my pieces published, "four, get the picture" and "Saga of Stars" (see below!).
+        Outside of writing, I enjoy rollerblading, science fiction movies, and reading medical anthropological books.
       </p>
 
       {/* Carousel */}
@@ -882,7 +886,7 @@ export default function App() {
                 onMouseLeave={() => setHighlightedNodes([])}
                 style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", borderBottom: `1px dotted ${darkMode ? "#93c5fd" : "#1e3a8a"}`, paddingBottom: "1px", cursor: "default" }}
               >exploring disease-causing variants</span>{" "}
-              and pathways, and{" "}
+              , and{" "}
               <span
                 onMouseEnter={() => setHighlightedNodes([5, 1, 3, 2])}
                 onMouseLeave={() => setHighlightedNodes([])}
