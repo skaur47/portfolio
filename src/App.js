@@ -1,6 +1,34 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin } from "lucide-react";
+
+const education = [
+  {
+    logo: "/bu.png",
+    institution: "Boston University",
+    degree: "B.S. Biomedical Engineering",
+    concentration: "Machine Learning",
+    date: "Sept 2022 – May 2026",
+    location: "Boston, MA",
+    coursework: [
+      "Introduction to Machine Learning",
+      "Computational Biology and Machine Learning",
+      "Systems Biology and AI",
+      "Biomedical Signals and Controls",
+      "Modern Control in Biological Systems",
+      "Probability, Statistics, and Data Science",
+      "Molecular Cell Biology and Biotechnology",
+      "Systems Physiology",
+      "RNA Therapeutics and Personalized Medicine",
+      "Clinical Applications of Biomedical Design",
+    ],
+    activities: [
+      "College of Engineering Student Government (ENGGOV), Vice President",
+      "The Beacon Literary Magazine, Vice President & Associate Editor",
+      "Society of Women Engineers, Member",
+    ],
+  },
+];
 
 const experiences = [
   {
@@ -12,6 +40,8 @@ const experiences = [
       "Collaborated as part of computational team to understand miRNA-siRNA crosstalk to optimize siRNA therapeutics.",
       "Created regulatory graph network to aid in understanding miRNA-siRNA crosstalk to guide future siRNA design and mitigate off-target effects.",
     ],
+    location: "Boston, MA",
+    skills: ["network analysis", "Python", "R"],
   },
   {
     logo: "/harvard.png",
@@ -25,6 +55,8 @@ const experiences = [
       "Discovered over 9 clusters of anomalous patients; created visualization media to understand cluster-driven phenotypes of anomalous patients.",
       "Presented findings to faculty and researchers from HMS DBMI in 15-minute presentation.",
     ],
+    location: "Boston, MA",
+    skills: ["anomaly detection","dimensionality reduction", "medical claims data","R"],
   },
   {
     logo: "/bu.png",
@@ -36,6 +68,8 @@ const experiences = [
       "Fine-tuned foundational modeling of cortical column through debugging algorithm and generated raster plots of neurons through command line prompts.",
       "Created various visual media on MATLAB Psychtoolbox to increase robustness and generalization of simulation.",
     ],
+    location: "Boston, MA",
+    skills: ["computational neuroscience", "MATLAB", "neural simulation", "Python"],
   },
   {
     logo: "/jax.png",
@@ -50,6 +84,8 @@ const experiences = [
       "Compiled research and functional enrichment analysis to understand biological themes represented in Alzheimer's disease and their causal influences from gene interactions.",
       "Presented findings to principal investigators and researchers at The Jackson Laboratory's 2023 Summer Student Program Symposium.",
     ],
+    location: "Bar Harbor, ME",
+    skills: ["causal inference", "multi-omics", "gene enrichment analysis","R"],
   },
   {
     logo: "/bu.png",
@@ -62,6 +98,8 @@ const experiences = [
       "Operated confocal microscopy, used immunohistochemistry and genotyping to analyze staining patterns.",
       "Investigated role of microtubules on V-ATPases membrane-trafficking in stretch follicle cells.",
     ],
+    location: "Boston, MA",
+    skills: ["confocal microscopy", "immunohistochemistry", "Drosophila biology", "molecular and cell biology"],
   },
 ];
 
@@ -120,7 +158,9 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
 
   const cardBg = darkMode ? "#162035" : "#ffffff";
   const cardBorder = darkMode ? "#3b5fc077" : "#1e3a8a22";
-  const terminalBg = darkMode ? "#020617" : "#0f172a";
+  const terminalBg = darkMode ? "#020617" : "#f1f5f9";
+  const terminalText = darkMode ? "#93c5fd" : "#1e3a8a";
+  const terminalPrompt = darkMode ? "#d97706" : "#92400e";
   const bodyColor = darkMode ? "#e2e8f0" : "#334155";
 
   const PublicationBlock = () => (
@@ -284,8 +324,8 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
                   >
                     {proj.skills.map((skill, j) => (
                       <div key={j} className="flex items-center gap-2">
-                        <span className="font-bold select-none" style={{ color: darkMode ? "#d97706" : "#92400e" }}>{">"}</span>
-                        <span style={{ color: "#93c5fd" }}>{skill}</span>
+                        <span className="font-bold select-none" style={{ color: terminalPrompt }}>{">"}</span>
+                        <span style={{ color: terminalText }}>{skill}</span>
                       </div>
                     ))}
                   </div>
@@ -301,7 +341,7 @@ function ResearchTab({ darkMode, openCards, setOpenCards }) {
 
 function HobbiesTab({ darkMode }) {
   const images = [
-    { src: "/circadiandrift.png",    name: "Circadian Drift (Fall 2026 Issue)" },
+    { src: "/circadiandrift.png",    name: "Circadian Drift (Fall 2025 Issue)" },
     { src: "/fourgetthepicture.png", name: "four, get the picture (Featured in Circadian Drift)" },
     { src: "/mothertongue.png",      name: "Mother Tongue (Spring 2025 Issue) " },
     { src: "/sagaofstars.png",       name: "Saga of Stars (Featured in Mother Tongue)" },
@@ -395,10 +435,10 @@ function HobbiesTab({ darkMode }) {
       {/* Text area — fill in later */}
       <p className="mb-8 leading-relaxed w-full" style={{ color: bodyColor }}>
         I enjoy writing, especially poetry, where I get to experiment with rhyme schemes, alliteration, and different narrative styles. 
-        I love playing with language to create rhythm, emotion, and imagery, and I’m always exploring new ways to shape ideas into meaningful stories on the page.
+        I love playing with language to create rhythm, emotion, and imagery, and I am always exploring new ways to shape ideas into meaningful and impactful vignettes.
         Currently, I serve as the Vice-President and Associate Editor of The Beacon at Boston University, the oldest creative works literary magazine on campus.
         During my time at The Beacon as an editor, I have had two of my pieces published, "four, get the picture" and "Saga of Stars" (see below!).
-        Outside of writing, I enjoy rollerblading, science fiction movies, and reading medical anthropological books.
+        Outside of writing, I enjoy rollerblading, science fiction movies, and traveling.
       </p>
 
       {/* Carousel */}
@@ -573,14 +613,37 @@ function NetworkMap({ darkMode, highlightedNodes = [] }) {
     <div className="w-full flex justify-center mt-4 mb-4" style={{ userSelect: "none" }}>
       <svg
         width="100%"
-        viewBox={`-10 0 ${W + 20} ${H}`}
+        viewBox={`-10 -52 ${W + 20} ${H + 52}`}
         style={{ minWidth: "400px", maxWidth: "980px", overflow: "visible" }}
       >
         <defs>
           <clipPath id="headshot-clip">
             <circle cx={cx} cy={cy} r="62" />
           </clipPath>
+          <path id="hint-curve" d="M 60,-18 Q 430,-50 800,-18" />
         </defs>
+
+        {/* Curved hint text — appears after all circles animate in (~2.6s) */}
+        <motion.g
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.7, duration: 0.7, ease: "easeIn" }}
+        >
+          <text>
+            <textPath
+              href="#hint-curve"
+              startOffset="52%"
+              textAnchor="middle"
+              fill={darkMode ? "#93c5fd" : "#1e3a8a"}
+              fontSize="18"
+              fontFamily="Georgia, serif"
+              opacity="0.6"
+              fontStyle="italic"
+            >
+              Hover over a circle to discover what I find exciting about each field!
+            </textPath>
+          </text>
+        </motion.g>
 
         {/* Curved dashed connection lines */}
         {nodeData.map((n) => (
@@ -734,8 +797,119 @@ function NetworkMap({ darkMode, highlightedNodes = [] }) {
   );
 }
 
+function EducationTab({ darkMode }) {
+  const cardBg = darkMode ? "#162035" : "#ffffff";
+  const cardBorder = darkMode ? "#3b5fc077" : "#1e3a8a22";
+  const bodyColor = darkMode ? "#cbd5e1" : "#334155";
+
+  return (
+    <div>
+      <div className="flex items-center gap-4 mb-6">
+        <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to right, transparent, #3b5fc0)" : "linear-gradient(to right, transparent, #1e3a8a)" }} />
+        <h2 className="text-2xl font-semibold whitespace-nowrap" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>Education</h2>
+        <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to left, transparent, #3b5fc0)" : "linear-gradient(to left, transparent, #1e3a8a)" }} />
+      </div>
+
+      <div className="space-y-6">
+        {education.map((edu, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.15, duration: 0.4 }}
+            className="rounded-2xl border shadow-sm overflow-hidden"
+            style={{ borderColor: cardBorder, background: cardBg }}
+          >
+            {/* Header */}
+            <div className="flex items-center gap-5 px-6 py-5 border-b" style={{ borderColor: cardBorder }}>
+              <div
+                className="w-16 h-16 rounded-full flex items-center justify-center shrink-0 border-2 shadow-sm"
+                style={{ background: "#ffffff", borderColor: "#1e3a8a" }}
+              >
+                <img
+                  src={process.env.PUBLIC_URL + edu.logo}
+                  alt={edu.institution}
+                  className="w-10 h-10 object-contain"
+                />
+              </div>
+              <div className="flex-1">
+                <p className="font-semibold text-base" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>{edu.institution}</p>
+                <p className="text-sm font-medium" style={{ color: darkMode ? "#d97706" : "#92400e" }}>
+                  {edu.degree}
+                  {edu.concentration && <span style={{ color: bodyColor }}> &mdash; Concentration in {edu.concentration}</span>}
+                </p>
+                {edu.location && (
+                  <p className="flex items-center gap-1 text-xs mt-0.5" style={{ color: darkMode ? "#94a3b8" : "#64748b" }}>
+                    <MapPin size={11} strokeWidth={2} />
+                    {edu.location}
+                  </p>
+                )}
+              </div>
+              <div className="shrink-0 text-right">
+                <span
+                  className="text-xs font-medium px-3 py-1 rounded-full block mb-1"
+                  style={{ background: darkMode ? "#1e3a8a22" : "#1e3a8a11", color: darkMode ? "#93c5fd" : "#1e3a8a" }}
+                >
+                  {edu.date}
+                </span>
+                {edu.honors && (
+                  <span
+                    className="text-xs font-semibold px-3 py-1 rounded-full block italic"
+                    style={{ background: darkMode ? "#92400e33" : "#fef3c7", color: darkMode ? "#fcd34d" : "#92400e" }}
+                  >
+                    {edu.honors}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Body */}
+            <div className="px-6 py-5 space-y-5 text-sm" style={{ color: bodyColor }}>
+              {/* Relevant Coursework */}
+              {edu.coursework && (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
+                    Relevant Coursework
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {edu.coursework.map((course, j) => (
+                      <span
+                        key={j}
+                        className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
+                        style={{ background: darkMode ? "#1e3a8a33" : "#e0e7ff", color: darkMode ? "#93c5fd" : "#1e3a8a" }}
+                      >
+                        {course}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Activities */}
+              {edu.activities && (
+                <div className="border-t pt-4" style={{ borderColor: cardBorder }}>
+                  <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
+                    Activities &amp; Organizations
+                  </p>
+                  <ul className="space-y-1.5 list-disc ml-4">
+                    {edu.activities.map((act, j) => (
+                      <li key={j}>{act}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ExperienceTimeline({ darkMode, setTab }) {
-  const [open, setOpen] = useState(null);
+  const [openItems, setOpenItems] = useState(experiences.map((_, i) => i));
+  const isOpen = (i) => openItems.includes(i);
+  const toggle = (i) => setOpenItems((prev) => prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]);
 
   return (
     <div>
@@ -768,7 +942,7 @@ function ExperienceTimeline({ darkMode, setTab }) {
                   borderColor: "#1e3a8a",
                   zIndex: 10,
                 }}
-                onClick={() => setOpen(open === i ? null : i)}
+                onClick={() => toggle(i)}
               >
                 <img
                   src={process.env.PUBLIC_URL + exp.logo}
@@ -784,13 +958,19 @@ function ExperienceTimeline({ darkMode, setTab }) {
                   borderColor: darkMode ? "#3b5fc077" : "#1e3a8a22",
                   background: darkMode ? "#162035" : "#ffffff",
                 }}
-                onClick={() => setOpen(open === i ? null : i)}
+                onClick={() => toggle(i)}
               >
                 {/* Header row */}
                 <div className="flex flex-wrap items-center justify-between px-5 py-4 gap-2 sm:gap-4">
                   <div>
                     <p className="font-semibold text-base" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>{exp.org}</p>
                     <p className="text-sm font-medium" style={{ color: darkMode ? "#d97706" : "#92400e" }}>{exp.role}</p>
+                    {exp.location && (
+                      <p className="flex items-center gap-1 text-xs mt-0.5" style={{ color: darkMode ? "#94a3b8" : "#64748b" }}>
+                        <MapPin size={11} strokeWidth={2} />
+                        {exp.location}
+                      </p>
+                    )}
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
                     <span
@@ -803,7 +983,7 @@ function ExperienceTimeline({ darkMode, setTab }) {
                       {exp.date}
                     </span>
                     <span className="text-base font-bold" style={{ color: darkMode ? "#d97706" : "#92400e" }}>
-                      {open === i ? "▲" : "▼"}
+                      {isOpen(i) ? "▲" : "▼"}
                     </span>
                   </div>
                 </div>
@@ -812,7 +992,7 @@ function ExperienceTimeline({ darkMode, setTab }) {
                 <motion.div
                   initial={false}
                   animate={
-                    open === i
+                    isOpen(i)
                       ? { height: "auto", opacity: 1 }
                       : { height: 0, opacity: 0 }
                   }
@@ -831,6 +1011,19 @@ function ExperienceTimeline({ darkMode, setTab }) {
                         <li key={j}>{b}</li>
                       ))}
                     </ul>
+                    {exp.skills && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {exp.skills.map((skill, j) => (
+                          <span
+                            key={j}
+                            className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
+                            style={{ background: darkMode ? "#1e3a8a33" : "#e0e7ff", color: darkMode ? "#93c5fd" : "#1e3a8a" }}
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                     {exp.researchIndex !== undefined && (
                       <div className="mt-3 pt-3 border-t" style={{ borderColor: darkMode ? "#1e3a8a44" : "#1e3a8a22" }}>
                         <button
@@ -926,6 +1119,8 @@ export default function App() {
         </div>
       </div>
     ),
+
+    education: <EducationTab darkMode={darkMode} />,
 
     experience: <ExperienceTimeline darkMode={darkMode} setTab={setTab} />,
 
@@ -1134,6 +1329,50 @@ return (
                   delay: delays[i],
                   ease: "easeIn",
                 }}
+              />
+            ))}
+          </>
+        )}
+
+        {/* Education Sprinkles when Education */}
+        {tab === "education" && (
+          <>
+            {leftPositions.map((position, i) => (
+              <motion.img
+                key={`edu-left-${i}`}
+                src={process.env.PUBLIC_URL + "/education.gif"}
+                className="fixed z-0 pointer-events-none hidden sm:block"
+                style={{
+                  width: "50px",
+                  height: "70px",
+                  left: `${position}px`,
+                  top: topPositions[i],
+                  filter: darkMode
+                    ? "brightness(0) invert(1)"
+                    : "grayscale(1) brightness(1.5) drop-shadow(0 0 3px rgba(0,0,0,0.15))",
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: darkMode ? 0.35 : 0.15 }}
+                transition={{ duration: 2.5, delay: delays[i], ease: "easeIn" }}
+              />
+            ))}
+            {rightPositions.map((position, i) => (
+              <motion.img
+                key={`edu-right-${i}`}
+                src={process.env.PUBLIC_URL + "/education.gif"}
+                className="fixed z-0 pointer-events-none hidden sm:block"
+                style={{
+                  width: "50px",
+                  height: "70px",
+                  right: `${position}px`,
+                  top: topPositions[i],
+                  filter: darkMode
+                    ? "brightness(0) invert(1)"
+                    : "grayscale(1) brightness(1.5) drop-shadow(0 0 3px rgba(0,0,0,0.15))",
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: darkMode ? 0.35 : 0.15 }}
+                transition={{ duration: 2.5, delay: delays[i], ease: "easeIn" }}
               />
             ))}
           </>
