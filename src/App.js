@@ -589,10 +589,10 @@ function NetworkMap({ darkMode, highlightedNodes = [] }) {
 
   const nodeData = [
     { angle: 0,   label: ["Biomedical", "Engineering"],  tooltip: ["Designing solutions at the", "intersection of biology", "and engineering"] },
-    { angle: 60,  label: ["Machine", "Learning"],         tooltip: ["Applying methods to", "biomedical and clinical", "complex problems"] },
+    { angle: 60,  label: ["Machine", "Learning"],         tooltip: ["Applying methods to", "biomedical and clinical", "data architectures"] },
     { angle: 120, label: ["Genomics &", "Multi-omics"],   tooltip: ["Analyzing transcriptomic and", "multi-omics data for", "disease insights"] },
     { angle: 180, label: ["Clinical", "Informatics"],     tooltip: ["Mining medical data", "to improve ", "healthcare delivery"] },
-    { angle: 240, label: ["Systems", "Biology"],   tooltip: ["Complex biological circuits", "and interactions", "for design and dicovery"] },
+    { angle: 240, label: ["Systems", "Biology"],   tooltip: ["Investigating biological", "circuits for", "design and dicovery"] },
     { angle: 300, label: ["Computational", "Biology"],    tooltip: ["Building pipelines for", "high-dimensional", "biological data"] },
   ].map((n, i) => {
     const rad = (n.angle * Math.PI) / 180;
@@ -732,7 +732,11 @@ function NetworkMap({ darkMode, highlightedNodes = [] }) {
             fill="none"
             stroke="#1e3a8a"
             strokeWidth="1.5"
-            animate={{ r: [68, 76, 68], opacity: [0.3, 0.08, 0.3] }}
+            animate={
+              (highlightedNodes.length > 0 || hoveredNode !== null)
+                ? { r: [75, 88, 75], opacity: [0.55, 0.15, 0.55] }
+                : { r: [68, 76, 68], opacity: [0.3, 0.08, 0.3] }
+            }
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
           <circle cx={cx} cy={cy} r="62" fill="#1e3a8a" />
@@ -780,8 +784,9 @@ function NetworkMap({ darkMode, highlightedNodes = [] }) {
                 <text
                   key={j}
                   x={rx + TW / 2}
-                  y={ry + T_PAD + j * TH_LINE + 7}
+                  y={ry + th / 2 + (j - (lines.length - 1) / 2) * TH_LINE}
                   textAnchor="middle"
+                  dominantBaseline="central"
                   fill={textFill}
                   fontSize="13"
                   fontFamily="Georgia, serif"
