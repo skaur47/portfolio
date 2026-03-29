@@ -4,6 +4,13 @@ import { Mail, Linkedin, Github, MapPin } from "lucide-react";
 
 const education = [
   {
+    logo: "/weillcornell.png",
+    institution: "Weill Cornell Graduate School of Medical Sciences",
+    degree: "M.S. Computational Biology",
+    date: "Aug 2026 – Mar 2028",
+    location: "New York, NY",
+  },
+  {
     logo: "/bu.png",
     institution: "Boston University",
     degree: "B.S. Biomedical Engineering",
@@ -815,10 +822,16 @@ function EducationTab({ darkMode }) {
         <div className="flex-1 h-px" style={{ background: darkMode ? "linear-gradient(to left, transparent, #3b5fc0)" : "linear-gradient(to left, transparent, #1e3a8a)" }} />
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-0">
         {education.map((edu, i) => (
-          <motion.div
-            key={i}
+          <React.Fragment key={i}>
+            {/* Connector line between cards */}
+            {i > 0 && (
+              <div className="flex justify-center py-1">
+                <div className="w-0.5 h-8" style={{ background: darkMode ? "#3b5fc055" : "#1e3a8a33" }} />
+              </div>
+            )}
+            <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.15, duration: 0.4 }}
@@ -905,6 +918,7 @@ function EducationTab({ darkMode }) {
               )}
             </div>
           </motion.div>
+          </React.Fragment>
         ))}
       </div>
     </div>
