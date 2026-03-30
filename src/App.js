@@ -35,6 +35,38 @@ const education = [
       "Society of Women Engineers, Member",
     ],
   },
+  {
+    logo: "/hopkintonhigh.png",
+    institution: "Hopkinton High School",
+    degree: "High School Diploma",
+    date: "Sept 2018 – May 2022",
+    location: "Hopkinton, MA",
+    coursework: [
+      "AP Biology",
+      "AP Chemistry",
+      "AP Environmental Science",
+      "AP Calculus AB and BC",
+      "AP Computer Science Principles",
+      "AP Computer Science A",
+      "AP United States History",
+      "AP English Language and Composition",
+    ],
+    activities: [
+      "Science Fair",
+      "Youth in Philantrophy Hopkinton and Junior Board Member",
+      "Mock Trial",
+      "HOSA-Future Health Professionals",
+      "Youth Accord Initiative",
+      "National Honors Society"
+    ],
+    distinctions: [
+      "Top 10% of Class of 2022",
+      { name: "Wellesley College Book Award", description: "Honors young women who have been top scholars in high school as well as talented performers in extracurricular areas" },
+      "The 2021 Moderna Therapeutics Award, 2nd Place Massachusetts State Science and Engineering Fair",
+      "3rd Place Hopkinton High School Science Fair (2019, 2021), Final Hopkinton High School Science Fair (2020), 1st Place Hopkinton High School Science Fair (2022)",
+      "1st Place Community Pitch Group Project Harvard VISION Global Health and Leadership Conference"
+    ],
+  },
 ];
 
 const experiences = [
@@ -882,41 +914,68 @@ function EducationTab({ darkMode }) {
             </div>
 
             {/* Body */}
-            <div className="px-6 py-5 space-y-5 text-sm" style={{ color: bodyColor }}>
-              {/* Relevant Coursework */}
-              {edu.coursework && (
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
-                    Relevant Coursework
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {edu.coursework.map((course, j) => (
-                      <span
-                        key={j}
-                        className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
-                        style={{ background: darkMode ? "#1e3a8a33" : "#e0e7ff", color: darkMode ? "#93c5fd" : "#1e3a8a" }}
-                      >
-                        {course}
-                      </span>
-                    ))}
+            {(edu.coursework || edu.activities || edu.distinctions) && (
+              <div className="px-6 py-5 space-y-5 text-sm" style={{ color: bodyColor }}>
+                {/* Relevant Coursework */}
+                {edu.coursework && (
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
+                      Relevant Coursework
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {edu.coursework.map((course, j) => (
+                        <span
+                          key={j}
+                          className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
+                          style={{ background: darkMode ? "#1e3a8a33" : "#e0e7ff", color: darkMode ? "#93c5fd" : "#1e3a8a" }}
+                        >
+                          {course}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {/* Activities */}
-              {edu.activities && (
-                <div className="border-t pt-4" style={{ borderColor: cardBorder }}>
-                  <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
-                    Activities &amp; Organizations
-                  </p>
-                  <ul className="space-y-1.5 list-disc ml-4">
-                    {edu.activities.map((act, j) => (
-                      <li key={j}>{act}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+                {/* Distinctions */}
+                {edu.distinctions && (
+                  <div className={edu.coursework ? "border-t pt-4" : ""} style={{ borderColor: cardBorder }}>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
+                      Distinctions &amp; Accomplishments
+                    </p>
+                    <ul className="space-y-2 list-disc ml-4">
+                      {edu.distinctions.map((d, j) => (
+                        <li key={j}>
+                          {typeof d === "string" ? d : (
+                            <>
+                              {d.name}
+                              {d.description && (
+                                <span className="block text-xs mt-0.5 italic" style={{ color: darkMode ? "#94a3b8" : "#64748b" }}>
+                                  {d.description}
+                                </span>
+                              )}
+                            </>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Activities */}
+                {edu.activities && (
+                  <div className="border-t pt-4" style={{ borderColor: cardBorder }}>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
+                      Activities &amp; Organizations
+                    </p>
+                    <ul className="space-y-1.5 list-disc ml-4">
+                      {edu.activities.map((act, j) => (
+                        <li key={j}>{act}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
           </motion.div>
           </React.Fragment>
         ))}
