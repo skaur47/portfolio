@@ -63,7 +63,7 @@ const education = [
       "Top 10% of Class of 2022",
       { name: "Wellesley College Book Award", description: "Honors young women who have been top scholars in high school as well as talented performers in extracurricular areas" },
       "The 2021 Moderna Therapeutics Award, 2nd Place Massachusetts State Science and Engineering Fair",
-      "3rd Place Hopkinton High School Science Fair (2019, 2021), Final Hopkinton High School Science Fair (2020), 1st Place Hopkinton High School Science Fair (2022)",
+      "3rd Place Hopkinton High School Science Fair (2019, 2021), Finalist Hopkinton High School Science Fair (2020), 1st Place Hopkinton High School Science Fair (2022)",
       "1st Place Community Pitch Group Project Harvard VISION Global Health and Leadership Conference"
     ],
   },
@@ -138,7 +138,7 @@ const experiences = [
       "Investigated role of microtubules on V-ATPases membrane-trafficking in stretch follicle cells.",
     ],
     location: "Boston, MA",
-    skills: ["confocal microscopy", "immunohistochemistry", "Drosophila biology", "molecular and cell biology"],
+    skills: ["confocal microscopy", "immunohistochemistry", "Drosophila biology", "molecular and cell biology","ImageJ"],
   },
 ];
 
@@ -180,6 +180,7 @@ const researchProjects = [
       "immunohistochemistry and immunofluorescence",
       "Drosophila melanogaster biology",
       "fly husbandry and genotyping",
+      "ImageJ"
     ],
     poster: null,
     experiment: "/mccalllabexperiment.png",
@@ -649,7 +650,7 @@ function NetworkMap({ darkMode, highlightedNodes = [] }) {
   const TW = 180, TH_LINE = 20, T_PAD = 12;
 
   return (
-    <div className="w-full flex justify-center mt-4 mb-4" style={{ userSelect: "none" }}>
+    <div className="w-full flex justify-center mt-0 mb-1" style={{ userSelect: "none" }}>
       <svg
         width="100%"
         viewBox={`-10 -52 ${W + 20} ${H + 52}`}
@@ -1157,42 +1158,47 @@ export default function App() {
               <span
                 onMouseEnter={() => setHighlightedNodes([5, 4, 2])}
                 onMouseLeave={() => setHighlightedNodes([])}
-                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", borderBottom: `1px dotted ${darkMode ? "#93c5fd" : "#1e3a8a"}`, paddingBottom: "1px", cursor: "default" }}
+                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", cursor: "default" }}
               >computational methods to biological systems</span>, particularly
               in areas where data-driven insights can lead to{" "}
               <span
                 onMouseEnter={() => setHighlightedNodes([3, 0])}
                 onMouseLeave={() => setHighlightedNodes([])}
-                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", borderBottom: `1px dotted ${darkMode ? "#93c5fd" : "#1e3a8a"}`, paddingBottom: "1px", cursor: "default" }}
+                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", cursor: "default" }}
               >translational impact</span>. My interests include{" "}
               <span
                 onMouseEnter={() => setHighlightedNodes([1, 5])}
                 onMouseLeave={() => setHighlightedNodes([])}
-                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", borderBottom: `1px dotted ${darkMode ? "#93c5fd" : "#1e3a8a"}`, paddingBottom: "1px", cursor: "default" }}
+                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", cursor: "default" }}
               >developing predictive models</span>,{" "}
               <span
                 onMouseEnter={() => setHighlightedNodes([4, 2])}
                 onMouseLeave={() => setHighlightedNodes([])}
-                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", borderBottom: `1px dotted ${darkMode ? "#93c5fd" : "#1e3a8a"}`, paddingBottom: "1px", cursor: "default" }}
+                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", cursor: "default" }}
               >exploring disease-causing variants</span>{" "}
               , and{" "}
               <span
                 onMouseEnter={() => setHighlightedNodes([5, 1, 3, 2])}
                 onMouseLeave={() => setHighlightedNodes([])}
-                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", borderBottom: `1px dotted ${darkMode ? "#93c5fd" : "#1e3a8a"}`, paddingBottom: "1px", cursor: "default" }}
+                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", cursor: "default" }}
               >leveraging machine learning to better understand complex physiological processes</span>.
               I'm excited by interdisciplinary projects that{" "}
               <span
                 onMouseEnter={() => setHighlightedNodes([0, 1, 2, 3, 4, 5])}
                 onMouseLeave={() => setHighlightedNodes([])}
-                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", borderBottom: `1px dotted ${darkMode ? "#93c5fd" : "#1e3a8a"}`, paddingBottom: "1px", cursor: "default" }}
+                style={{ color: darkMode ? "#93c5fd" : "#1e3a8a", cursor: "default" }}
               >blend engineering principles, biological mechanisms, and computational biology methodologies</span>{" "}
               to solve meaningful real-world problems.
             </p>
           </div>
-          {/* Right: network map */}
+          {/* Right: network map + reach out */}
           <div className="w-full md:w-[620px] md:shrink-0 overflow-x-auto">
             <NetworkMap darkMode={darkMode} highlightedNodes={highlightedNodes} />
+            <div style={{ width: "65%", minWidth: "400px", maxWidth: "980px", margin: "0 auto" }}>
+              <p className="mt-4 text-center text-sm italic" style={{ color: darkMode ? "#94a3b8" : "#64748b", fontFamily: "Georgia, serif" }}>
+                Reach out! I'd love to discuss research, potential collaborations, or anything at the intersection of biology and computation. Always happy to connect!
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -1622,6 +1628,12 @@ return (
           className="p-2 sm:p-6 relative z-10"
         >
           {tabs[tab]}
+          <p
+            className="mt-10 mb-2 text-center text-xs"
+            style={{ color: darkMode ? "#475569" : "#94a3b8", fontFamily: "Georgia, serif", letterSpacing: "0.05em" }}
+          >
+            Created by Simran Kaur
+          </p>
         </motion.div>
       </div>
     </div>
