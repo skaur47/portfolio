@@ -55,16 +55,12 @@ const education = [
       "Science Fair",
       "Youth in Philantrophy Hopkinton and Junior Board Member",
       "Mock Trial",
-      "HOSA-Future Health Professionals",
-      "Youth Accord Initiative",
       "National Honors Society"
     ],
     distinctions: [
       "Top 10% of Class of 2022",
       { name: "Wellesley College Book Award", description: "Honors young women who have been top scholars in high school as well as talented performers in extracurricular areas" },
-      "The 2021 Moderna Therapeutics Award, 2nd Place Massachusetts State Science and Engineering Fair",
-      "3rd Place Hopkinton High School Science Fair (2019, 2021), Finalist Hopkinton High School Science Fair (2020), 1st Place Hopkinton High School Science Fair (2022)",
-      "1st Place Community Pitch Group Project Harvard VISION Global Health and Leadership Conference"
+      "The 2021 Moderna Therapeutics Award, 2nd Place Massachusetts State Science and Engineering Fair"
     ],
   },
 ];
@@ -941,7 +937,7 @@ function EducationTab({ darkMode }) {
                 {edu.distinctions && (
                   <div className={edu.coursework ? "border-t pt-4" : ""} style={{ borderColor: cardBorder }}>
                     <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: darkMode ? "#93c5fd" : "#1e3a8a" }}>
-                      Distinctions &amp; Accomplishments
+                      Distinctions &amp; Honors
                     </p>
                     <ul className="space-y-2 list-disc ml-4">
                       {edu.distinctions.map((d, j) => (
